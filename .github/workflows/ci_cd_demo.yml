@@ -1,0 +1,42 @@
+name: Salesforce CI/CD
+
+on:
+  push:
+    branches:
+      - main # Or your default branch
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Use a recent Node.js version
+
+      - name: Install Salesforce CLI
+        run: npm install @salesforce/cli --location=global
+
+      - name: Authenticate to Salesforce Org
+        run: sf org login sfdx-url --sfdx-url "${{ secrets.SFDX_AUTH_URL }}" --set-default-dev-hub --alias myorg
+
+      - name: Display org details (optional)
+        run: sf org display -o myorg
+
+      - name: Run Apex Tests
+        run: sf apex run test --code-coverage --result-format human --wait 10 --target-org myorg
+
+      - name: Check Test Results and Coverage (optional but recommended)
+        # Add steps here to parse test results and coverage, and fail the job if necessary.
+        # You can use tools like sf apex report test --test-run-id <test-run-id>
+
+      - name: Deploy to Salesforce Org
+        run: sf project deploy start --metadata-dir force-app --target-org myorg --wait 30
+
+      - name: Post deployment verification (optional)
+        # Add steps here to verify the deployment, e.g., running post-deploy scripts.
+        run: echo "Deployment complete."
