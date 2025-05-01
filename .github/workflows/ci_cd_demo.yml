@@ -27,7 +27,7 @@ jobs:
           cat auth_url 
 
       - name: Authenticate to Salesforce Org
-        run: sf org login sfdx-url-file --sfdx-url auth_url --alias myorg
+        run: sf org login sfdx-url --sfdx-url-file auth_url --alias myorg
         
       - name: Display org details (optional)
         run: sf org display -o myorg
