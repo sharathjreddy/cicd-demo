@@ -21,8 +21,13 @@ jobs:
       - name: Install Salesforce CLI
         run: npm install @salesforce/cli --location=global
 
+      - name: write config files
+        run: | 
+          printf '%s' '${{ secrets.SFDX_AUTH_URL }}' > auth_url
+          cat auth_url 
+
       - name: Authenticate to Salesforce Org
-        run: sf org login sfdx-url --sfdx-url "${{ secrets.SFDX_AUTH_URL }}" --set-default-dev-hub --alias myorg
+        run: sf org login sfdx-url --sfdx-url auth_url --alias myorg
 
       - name: Display org details (optional)
         run: sf org display -o myorg
