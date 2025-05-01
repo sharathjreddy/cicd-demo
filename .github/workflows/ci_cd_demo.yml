@@ -30,10 +30,6 @@ jobs:
       - name: Run Apex Tests
         run: sf apex run test --code-coverage --result-format human --wait 10 --target-org myorg
 
-      - name: Check Test Results and Coverage (optional but recommended)
-        # Add steps here to parse test results and coverage, and fail the job if necessary.
-        # You can use tools like sf apex report test --test-run-id <test-run-id>
-
       - name: Deploy to Salesforce Org
         run: sf project deploy start --metadata-dir force-app --target-org myorg --wait 30
 
