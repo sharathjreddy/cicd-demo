@@ -32,11 +32,11 @@ jobs:
       - name: Display org details (optional)
         run: sf org display -o myorg
 
-      - name: Run Apex Tests
-        run: sf apex run test --code-coverage --result-format human --wait 10 --target-org myorg
-
       - name: Deploy to Salesforce Org
         run: sf project deploy start --manifest ./manifest/package.xml --target-org myorg --wait 30
+
+      - name: Run Apex Tests
+        run: sf apex run test --code-coverage --result-format human --wait 10 --target-org myorg
 
       - name: Post deployment verification (optional)
         # Add steps here to verify the deployment, e.g., running post-deploy scripts.
