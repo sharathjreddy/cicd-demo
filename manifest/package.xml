@@ -4,39 +4,22 @@
         <members>FeedbackRequest__c</members>
         <name>CustomObject</name>
     </types>
-    <!--
+
     <types>
-        <members>*</members>
+        <members>Feedback</members>
+        <name>PermissionSet</name>
+    </types>
+
+    <types>
+        <members>FeedbackRequestCreator</members>
+        <members>FeedbackRequestCreatorTest</members>
         <name>ApexClass</name>
     </types>
+    
     <types>
-        <members>*</members>
-        <name>ApexComponent</name>
+        <members>Update_Feedback_Request_Close_Date</members>
+        <name>Flow</name>
     </types>
-    <types>
-        <members>*</members>
-        <name>ApexPage</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexTestSuite</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexTrigger</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>AuraDefinitionBundle</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>LightningComponentBundle</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>StaticResource</name>
-    </types>
-    -->
-    <version>63.0</version>
+
+    <version>60.0</version>
 </Package>
